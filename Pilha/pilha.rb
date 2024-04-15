@@ -54,4 +54,6 @@ stack.push(node1)
 stack.push(node2)
 stack.push(node3)
 
+stack.show
+
 stack.pop
