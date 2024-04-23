@@ -7,14 +7,16 @@ class Node
   end
 end
 
-class Stack
+class Pilha
   attr_reader :top
 
   def initialize
     @top = nil
   end
 
-  def push(node)
+  def push(data)
+    node = Node.new(data)
+
     node.prox = top
     @top = node
   end
@@ -44,16 +46,12 @@ class Stack
   end
 end
 
-node1 = Node.new(1)
-node2 = Node.new(2)
-node3 = Node.new(3)
+pilha = Pilha.new
 
-stack = Stack.new
+pilha.push(1)
+pilha.push(2)
+pilha.push(3)
 
-stack.push(node1)
-stack.push(node2)
-stack.push(node3)
+pilha.show
 
-stack.show
-
-stack.pop
+pilha.pop
