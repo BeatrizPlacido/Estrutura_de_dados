@@ -14,7 +14,8 @@ class Queue
     @first = nil
   end
 
-  def enqueue(node)
+  def enqueue(data)
+    node = Node.new(data)
     current_node = first
 
     if empty?
@@ -53,19 +54,12 @@ class Queue
   end
 end
 
-node1 = Node.new(1)
-node2 = Node.new(2)
-node3 = Node.new(3)
-node4 = Node.new(4)
-
-
 queue = Queue.new
 
-queue.enqueue(node1)
-queue.enqueue(node2)
-queue.enqueue(node3)
-queue.enqueue(node4)
-
+queue.enqueue(1)
+queue.enqueue(2)
+queue.enqueue(3)
+queue.enqueue(4)
 
 queue.show
 
