@@ -12,21 +12,19 @@ class Queue
 
   def initialize
     @first = nil
+    @last = nil
   end
 
   def enqueue(data)
     node = Node.new(data)
-    current_node = first
 
     if empty?
       @first = node
     else
-      while current_node.prox != nil do
-        current_node = current_node.prox
-      end
-
-      current_node.prox = node
+      @last.prox = node
     end
+    @last = node
+    node.prox = nil
   end
 
   def dequeue
