@@ -14,24 +14,26 @@ class LinkedList
     @first = nil
   end
 
-  def insert(data, index)
-    node = Node.new(data)
-    current_node = first
-    i = 1
+  class << self
+    def insert(data, index)
+      node = Node.new(data)
+      current_node = first
+      i = 1
 
-    if empty?
-      @first = node
-    else
-      if index == 0
-        node.prox = current_node
+      if empty?
         @first = node
       else
-        while i != index do
-          current_node = current_node.prox
-          i +=1
+        if index == 0
+          node.prox = current_node
+          @first = node
+        else
+          while i != index do
+            current_node = current_node.prox
+            i +=1
+          end
+          node.prox = current_node.prox
+          current_node.prox = node
         end
-        node.prox = current_node.prox
-        current_node.prox = node
       end
     end
   end
@@ -71,16 +73,14 @@ class LinkedList
   end
 end
 
-linked_list = LinkedList.new
+LinkedList.insert(1, 0)
+LinkedList.insert(2, 1)
+LinkedList.insert(3, 2)
+LinkedList.insert(4, 3)
+LinkedList.insert(5, 2)
+LinkedList.insert(6, 0)
 
-linked_list.insert(1, 0)
-linked_list.insert(2, 1)
-linked_list.insert(3, 2)
-linked_list.insert(4, 3)
-linked_list.insert(5, 2)
-linked_list.insert(6, 0)
+LinkedList.show
 
-linked_list.show
-
-linked_list.delete(5)
-linked_list.delete(6)
+LinkedList.delete(5)
+LinkedList.delete(6)
