@@ -8,16 +8,12 @@ class Node
 end
 
 class LinkedList
-  attr_reader :first
-
-  def initialize
-    @first = nil
-  end
+  @first = nil
 
   class << self
     def insert(data, index)
       node = Node.new(data)
-      current_node = first
+      current_node = @first
       i = 1
 
       if empty?
@@ -36,40 +32,40 @@ class LinkedList
         end
       end
     end
-  end
 
-  def delete(node_to_delete)
-    return if empty?
+    def delete(node_to_delete)
+      return if empty?
 
-    if node_to_delete == first.data
-      @first = first.prox
-    else
-      current_node = first
-      previous_node = nil
+      if node_to_delete == @first.data
+        @first = @first.prox
+      else
+        current_node = @first
+        previous_node = nil
 
-      while node_to_delete != current_node.data do
-        previous_node = current_node
+        while node_to_delete != current_node.data do
+          previous_node = current_node
+          current_node = current_node.prox
+        end
+
+        previous_node.prox = current_node.prox
+      end
+    end
+
+    def empty?
+      @first.nil?
+    end
+
+    def show
+      current_node = @first
+
+      while current_node
+        print "#{current_node.data} -> "
+
         current_node = current_node.prox
       end
 
-      previous_node.prox = current_node.prox
+      puts "NULL"
     end
-  end
-
-  def empty?
-    first.nil?
-  end
-
-  def show
-    current_node = first
-
-    while current_node.present? do
-      print "#{current_node.data} -> "
-
-      current_node = current_node.prox
-    end
-
-    puts "NULL"
   end
 end
 
