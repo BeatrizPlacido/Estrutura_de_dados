@@ -10,7 +10,6 @@ def encontrar_maior(vetor)
     if item > maior
       maior = vetor[index]
       i = index
-      puts 
     end
   end
 
@@ -25,13 +24,7 @@ def ordenar_selecao(vetor)
   for item in vetor
     print "#{vetor} \n"
 
-    posicao_maior = encontrar_maior(vetor)
-    puts posicao_maior
-
-    if vetor[posicao_maior] == vetor[ultimo]
-      puts "posicao_maior: #{posicao_maior} \n ultimo: #{vetor[ultimo]}"
-      next
-    end
+    posicao_maior = encontrar_maior(vetor[0..ultimo])
 
     aux = vetor[ultimo]
     vetor[ultimo] = vetor[posicao_maior]
